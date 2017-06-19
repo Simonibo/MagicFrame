@@ -7,6 +7,7 @@
     tools:context="com.example.user.magicframe.MainActivity">
 
     <com.example.user.magicframe.MagicFrame
+        android:id="@+id/magicframe"
         android:layout_height="match_parent"
         android:layout_width="match_parent"/>
 
