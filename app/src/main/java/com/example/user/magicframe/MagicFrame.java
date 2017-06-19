@@ -17,13 +17,9 @@ import android.view.View;
  * The main view of the app.
  */
 
-public class MagicFrame extends View implements SensorEventListener {
+public class MagicFrame extends View{
     private int xmin, xmax, ymin, ymax;
     private double x, y, vx, vy;
-    public SensorManager sm;
-    public Sensor as;
-    private long time;
-    private long lastlogtime;
     Paint black;
 
     public MagicFrame(Context context) {
@@ -52,29 +48,5 @@ public class MagicFrame extends View implements SensorEventListener {
 
     protected void onDraw(Canvas canvas) {
         canvas.drawRect(0, 0, 100, 100, black);
-    }
-
-    @Override
-    public void onSensorChanged(SensorEvent sensorEvent) {
-        if(time == 0) {
-            time = sensorEvent.timestamp;
-            lastlogtime = time;
-        } else {
-            long dt = sensorEvent.timestamp - time;
-            vx += sensorEvent.values[0] * dt;
-            vy += sensorEvent.values[1] * dt;
-            x += vx * dt;
-            y += vy * dt;
-            time = sensorEvent.timestamp;
-            if(lastlogtime - time > 1000000000) {
-                Log.d("Position", x + ", " + y);
-                lastlogtime = time;
-            }
-        }
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int i) {
-        //Do nothin'
     }
 }
