@@ -5,11 +5,11 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
-public class MainActivity extends AppCompatActivity implements SensorEventListener {
+public class MainActivity extends Activity implements SensorEventListener {
     public SensorManager sm;
     public Sensor as;
     MagicFrame mf;
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             if(s != null) {
                 Log.d("Sensors", "Found sensor!");
                 as = s;
+                sm.registerListener(this, as, SensorManager.SENSOR_DELAY_NORMAL);
             } else {
                 Log.d("Sensors", "Linear acceleration sensor ain't available!");
             }

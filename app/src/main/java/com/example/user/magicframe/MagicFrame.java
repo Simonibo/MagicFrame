@@ -17,7 +17,7 @@ import android.view.View;
  * The main view of the app.
  */
 
-public class MagicFrame extends View{
+public class MagicFrame extends View {
     private int xmin, xmax, ymin, ymax;
     private double x, y, vx, vy;
     Paint black;
